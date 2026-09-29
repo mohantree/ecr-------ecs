@@ -9,7 +9,7 @@ env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: ecr---ecs
   ECS_SERVICE: ecr-ecs-service
-  ECS_CLUSTER: ecr-ecs-cluster
+  ECS_CLUSTER: ecr--ecs-cluster
   ECS_TASK_DEFINITION: task-definition.json
   CONTAINER_NAME: ecr-ecs-container
 
