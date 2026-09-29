@@ -6,11 +6,11 @@
   ],
   "cpu": "256",
   "memory": "512",
-  "executionRoleArn": "YOUR_ECS_TASK_EXECUTION_ROLE_ARN",
+  "executionRoleArn": "arn:aws:iam::595083028893:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "name": "ecr-ecs-container",
-      "image": "PLACEHOLDER_IMAGE",
+      "image": "595083028893.dkr.ecr.ap-south-1.amazonaws.com/ecr---ecs:latest",
       "essential": true,
       "portMappings": [
         {
