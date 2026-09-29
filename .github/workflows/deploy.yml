@@ -7,11 +7,11 @@ on:
 
 env:
   AWS_REGION: ap-south-1
-  ECR_REPOSITORY: sample-web-app
-  ECS_SERVICE: sample-web-service
-  ECS_CLUSTER: sample-web-cluster
-  ECS_TASK_DEFINITION: .aws/task-definition.json
-  CONTAINER_NAME: sample-web-container
+  ECR_REPOSITORY: ecr---ecs
+  ECS_SERVICE: ecr-ecs-service
+  ECS_CLUSTER: ecr-ecs-cluster
+  ECS_TASK_DEFINITION: task-definition.json
+  CONTAINER_NAME: ecr-ecs-container
 
 jobs:
   deploy:
@@ -37,6 +37,7 @@ jobs:
       - name: Build Docker image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build \
@@ -45,7 +46,7 @@ jobs:
       - name: Push Docker image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ecr---ecs
+          ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker push \
