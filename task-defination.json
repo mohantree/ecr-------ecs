@@ -1,0 +1,24 @@
+{
+  "family": "ecr-ecs-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "YOUR_ECS_TASK_EXECUTION_ROLE_ARN",
+  "containerDefinitions": [
+    {
+      "name": "ecr-ecs-container",
+      "image": "PLACEHOLDER_IMAGE",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ]
+}
